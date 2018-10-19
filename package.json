@@ -2,16 +2,23 @@
   "name": "slydok-interface",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "electron": "^1.4.14",
+    "react-scripts": "0.8.5"
+  },
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "electron": "^3.0.5"
   },
+  "main": "src/electron-starter.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron ."
   },
   "eslintConfig": {
     "extends": "react-app"
