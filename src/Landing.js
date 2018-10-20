@@ -28,7 +28,7 @@ class Landing extends Component {
   }
 
   sendUpdate() {
-    if (this.state.acceptedFiles.length <= 0 && this.state.url == "") {
+    if (this.state.acceptedFiles.length <= 0 && this.state.url === "") {
       alert("No file has been chosen");
     } else {
       this.props.setFiles(this.state.acceptedFiles, this.state.url);
