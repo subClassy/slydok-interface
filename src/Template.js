@@ -21,12 +21,17 @@ class Template extends Component {
       dumbArray: [1, 2, 3, 4]
     }
     this.updateTemplate = this.updateTemplate.bind(this);
+    this.sendUpdate = this.sendUpdate.bind(this);
   }
 
   updateTemplate(index) {
     this.setState({
       templNo: index
     });
+  }
+
+  sendUpdate() {
+    this.props.setTemplate(this.state.templNo);
   }
 
   render() {
@@ -49,6 +54,11 @@ class Template extends Component {
           {
             tempList
           }
+        </div>
+        <div>
+          <button onClick={this.sendUpdate} className="submit-btn">
+            Submit
+          </button>
         </div>
         <style jsx>{`
           .img-container {
@@ -73,7 +83,23 @@ class Template extends Component {
           }
           .highlight {
             border: 2px solid #7b10ff;
-            
+          }
+          .submit-btn {
+            box-shadow: inset 0 0 0 60px #7460d5;
+            border: none;
+            color: #fff;
+            font-family: Montserrat, sans-serif;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 4px;
+            margin-top: 30px;
+            transition: all 0.3s ease-in-out;
+          }
+          .submit-btn:hover {
+            background: transparent;
+            box-shadow: inset 0 0 0 2px #7460d5;
+            cursor: pointer;
           }
         `}
         </style>
