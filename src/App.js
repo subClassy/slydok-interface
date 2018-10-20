@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Landing from "./Landing";
 import Template from "./Template";
+import Download from "./Download";
 import "./App.css";
 
 class App extends Component {
@@ -9,9 +10,11 @@ class App extends Component {
     this.state = {
       showPage: "landing",
       acceptedFiles: [],
-      url: ""
+      url: "",
+      templNo: 1
     };
     this.setFiles = this.setFiles.bind(this);
+    this.setTemplate = this.setTemplate.bind(this);
   }
 
   setFiles(acceptedFiles, url) {
@@ -22,14 +25,25 @@ class App extends Component {
     });
   }
 
+  setTemplate(index) {
+    this.setState({
+      templNo: index,
+      showPage: "download"
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           {this.state.showPage !== "landing" ? (
-            <Landing setFiles={this.setFiles} />
+            this.state.showPage !== "template" ? (
+              <Landing setFiles={this.setFiles} />
+            ) : (
+              <Template setTemplate={this.setTemplate} />
+            )
           ) : (
-            <Template />
+            <Download />
           )}
         </div>
       </div>
