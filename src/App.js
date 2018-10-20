@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          {this.state.showPage === "landing" ? (
+          {this.state.showPage !== "landing" ? (
             <Landing setFiles={this.setFiles} />
           ) : (
             <Template />
