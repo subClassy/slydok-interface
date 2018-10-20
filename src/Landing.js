@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import Dropzone from "react-dropzone";
+import "./App.css";
 
 class Landing extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,9 +22,7 @@ class Landing extends Component {
     return (
       <div className="outer--main">
         <div className="outer">
-          <div className="navbar">
-            Slydok
-          </div>
+          <div className="navbar">Slydok</div>
           <div className="content">
             <div className="title">
               Convert your docs into stunning presentations
@@ -64,6 +62,7 @@ class Landing extends Component {
             </div>
             <div className="alt-opt">
               <span>or</span>
+
             </div>
           </div>
         </div>
