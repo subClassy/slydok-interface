@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Dropzone from "react-dropzone";
-import "./App.css";
+import Navbar from "./Navbar";
 
 class Landing extends Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class Landing extends Component {
       url: ""
     };
     this.urlChanged = this.urlChanged.bind(this);
+    this.sendUpdate = this.sendUpdate.bind(this);
   }
 
   onDrop(acceptedFiles, rejectedFiles) {
@@ -26,6 +27,14 @@ class Landing extends Component {
     });
   }
 
+  sendUpdate() {
+    if (this.state.acceptedFiles.length <= 0 && this.state.url == "") {
+      alert("No file has been chosen");
+    } else {
+      this.props.setFiles(this.state.acceptedFiles, this.state.url);
+    }
+  }
+
   componentDidUpdate() {
     if (this.state.rejectedFiles.length > 0) {
       alert("Only choose a Doc file");
@@ -39,11 +48,8 @@ class Landing extends Component {
     return (
       <div className="outer--main">
         <div className="outer">
-          <div className="navbar">Slydok</div>
+          <Navbar />
           <div className="content">
-            <div className="title">
-              Convert your docs into stunning presentations
-            </div>
             <div className="upload--file">
               <div className="sub-head">
                 <span>Upload a File</span>
@@ -94,24 +100,19 @@ class Landing extends Component {
                 className="url-input"
               />
             </div>
+            <div>
+              <button onClick={this.sendUpdate} className="submit-btn">
+                Continue
+              </button>
+            </div>
           </div>
         </div>
         <style jsx>
           {`
-            .navbar {
-              font-size: 3.5em;
-              padding: 25px;
-              padding-bottom: 10px;
-              font-family: "Righteous", cursive;
-            }
             .content {
               display: flex;
               flex-direction: column;
             }
-            .title {
-              margin-bottom: 30px;
-            }
-            .title,
             .alt-opt {
               font-size: 25px;
               color: #b9b9b9;
@@ -175,6 +176,23 @@ class Landing extends Component {
             .url-input:focus {
               outline: none;
               border: 1px solid #7b10ff;
+            }
+            .submit-btn {
+              box-shadow: inset 0 0 0 60px #7460d5;
+              border: none;
+              color: #fff;
+              font-family: Montserrat, sans-serif;
+              padding: 10px 20px;
+              font-size: 20px;
+              font-weight: 500;
+              border-radius: 4px;
+              margin-top: 30px;
+              transition: all 0.3s ease-in-out;
+            }
+            .submit-btn:hover {
+              background: transparent;
+              box-shadow: inset 0 0 0 2px #7460d5;
+              cursor: pointer;
             }
           `}
         </style>
