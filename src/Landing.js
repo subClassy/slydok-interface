@@ -7,8 +7,10 @@ class Landing extends Component {
     super(props);
     this.state = {
       acceptedFiles: [],
-      rejectedFiles: []
+      rejectedFiles: [],
+      url: ""
     };
+    this.urlChanged = this.urlChanged.bind(this);
   }
 
   onDrop(acceptedFiles, rejectedFiles) {
@@ -16,6 +18,21 @@ class Landing extends Component {
       acceptedFiles,
       rejectedFiles
     });
+  }
+
+  urlChanged(event) {
+    this.setState({
+      url: event.target.value
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.state.rejectedFiles.length > 0) {
+      alert("Only choose a Doc file");
+      this.setState({
+        rejectedFiles: []
+      });
+    }
   }
 
   render() {
@@ -28,6 +45,9 @@ class Landing extends Component {
               Convert your docs into stunning presentations
             </div>
             <div className="upload--file">
+              <div className="sub-head">
+                <span>Upload a File</span>
+              </div>
               <span>
                 <Dropzone
                   onDrop={this.onDrop.bind(this)}
@@ -62,7 +82,17 @@ class Landing extends Component {
             </div>
             <div className="alt-opt">
               <span>or</span>
-
+            </div>
+            <div className="sub-head">
+              <span>Enter a Google Doc shareable link</span>
+            </div>
+            <div>
+              <input
+                value={this.state.url}
+                type="text"
+                onChange={this.urlChanged}
+                className="url-input"
+              />
             </div>
           </div>
         </div>
@@ -71,11 +101,15 @@ class Landing extends Component {
             .navbar {
               font-size: 3.5em;
               padding: 25px;
+              padding-bottom: 10px;
               font-family: "Righteous", cursive;
             }
             .content {
               display: flex;
               flex-direction: column;
+            }
+            .title {
+              margin-bottom: 30px;
             }
             .title,
             .alt-opt {
@@ -87,7 +121,7 @@ class Landing extends Component {
               min-height: 13vh;
               width: 90vh;
               margin: 0 auto;
-              margin-top: 60px;
+              margin-top: 20px;
               border: 1px dashed #ffffff;
               border-radius: 15px;
               position: relative;
@@ -108,17 +142,39 @@ class Landing extends Component {
               text-decoration: underline;
             }
             .browse--file:focus {
-                outline: none;
+              outline: none;
             }
             .choosen-file {
-                margin-top: 25px;
-                font-size: 20px;
+              margin-top: 25px;
+              font-size: 20px;
             }
             .file--name {
-                color: #8872fc;
+              color: #8872fc;
+            }
+            .sub-head {
+              font-size: 25px;
+              margin-top: 25px;
             }
             .alt-opt {
-                margin-top: 25px;
+              margin-top: 25px;
+            }
+            .url-input {
+              background: none;
+              color: white;
+              border: none;
+              border: 1px solid;
+              border-radius: 8px;
+              font-family: Montserrat, sans-serif;
+              font-size: 20px;
+              margin: 20px;
+              padding: 10px 20px;
+              width: 95vh;
+              opacity: 0.8;
+              transition: all 0.2s ease-in;
+            }
+            .url-input:focus {
+              outline: none;
+              border: 1px solid #7b10ff;
             }
           `}
         </style>
