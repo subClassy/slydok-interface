@@ -38,12 +38,12 @@ class App extends Component {
         <div className="App-header">
           {this.state.showPage !== "landing" ? (
             this.state.showPage !== "template" ? (
-              <Landing setFiles={this.setFiles} />
+              <Download />
             ) : (
               <Template setTemplate={this.setTemplate} />
             )
           ) : (
-            <Download />
+            <Landing setFiles={this.setFiles} />
           )}
         </div>
       </div>
