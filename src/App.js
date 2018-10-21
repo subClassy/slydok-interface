@@ -23,6 +23,15 @@ class App extends Component {
       url,
       showPage: "template"
     });
+    // console.log(acceptedFiles[0]);
+    const data = {
+      file: acceptedFiles[0].name,
+      url: url
+    };
+    fetch("/", {
+      method: "GET",
+      body: JSON.stringify(data)
+    }).then(response => response.json());
   }
 
   setTemplate(index) {
@@ -46,12 +55,12 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           {this.state.showPage !== "landing" ? (
-            this.state.showPage !== "template" ? (
+            // this.state.showPage !== "template" ? (
               <Download />
             ) : (
-              <Template setTemplate={this.setTemplate} />
-            )
-          ) : (
+          //     <Template setTemplate={this.setTemplate} />
+          //   )
+          // ) : (
             <Landing setFiles={this.setFiles} />
           )}
         </div>
