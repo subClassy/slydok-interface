@@ -30,6 +30,15 @@ class App extends Component {
       templNo: index,
       showPage: "download"
     });
+    const data = {
+      file: this.state.acceptedFiles[0],
+      url: this.state.url,
+      templNo: index
+    };
+    fetch("/", {
+      method: "GET",
+      body: JSON.stringify(data)
+    }).then(response => response.json());
   }
 
   render() {

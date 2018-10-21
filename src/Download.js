@@ -7,8 +7,8 @@ class Download extends Component {
       <div className="outer--main">
         <Navbar />
         <div className="inner">
-          <span>Your File is Ready</span>
-          <button className="submit-btn">Download</button>
+          <span>Your Presentation has been saved</span>
+          {/* <button className="submit-btn">Download</button> */}
         </div>
         <style jsx>
           {`
